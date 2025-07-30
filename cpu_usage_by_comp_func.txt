@@ -1,0 +1,7 @@
+let HighCpuUsage = (threshold: real) {
+	Perf
+	| where ObjectName == "Processor" and CounterName == "% Processor Time"
+	| summarize avg_CounterValue = avg(CounterValue) by Computer
+	| where avg_CounterValue > threshold
+};
+HighCpuUsage(80)
