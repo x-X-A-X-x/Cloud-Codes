@@ -1,0 +1,4 @@
+SecurityEvent //table name
+| join Heartbeat on Computer //joining SecurityEvent with Heartbeat on the common Computer column
+| where EventID == "4688" //Looking for Event ID for new process
+| project Computer, OSType, OSMajorVersion, Version //Displaying data from both tables
